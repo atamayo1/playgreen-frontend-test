@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const LoginContainer = styled.div`
   .forgot-link {
+    color: ${({theme}) => theme.colorPrincipal};
     text-decoration: none;
   }
 
@@ -12,7 +13,7 @@ export const LoginContainer = styled.div`
   .btn-login {
     width: 122px;
     height: 66px;
-    color: #fff;
+    color: ${({theme}) => theme.backgroundPrincipal};
     background: linear-gradient(99deg, #236bfe 6.69%, #0d4ed3 80.95%);
     border-radius: 25px;
   }
@@ -25,9 +26,9 @@ export const LoginContainer = styled.div`
   #typePasswordX-2 {
     box-sizing: border-box;
     height: 67px;
-    background: #2f2f43;
+    background: ${({theme}) => theme.colorWhite};
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 18px;
-    color: #fff;
+    color: ${({theme}) => theme.colorPrincipal};
   }
 `;

@@ -1,6 +1,8 @@
 :root {
-    --background-principal: #181828;
-    --color-principal: #FEFEFE;
+    /* --background-principal: #181828; */
+    --background-principal: #E5E5E5;
+    /* --color-principal: #FEFEFE; */
+    --color-principal: #161617;
     --general-font: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 

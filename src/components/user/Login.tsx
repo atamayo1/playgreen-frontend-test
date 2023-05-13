@@ -80,7 +80,7 @@ const Login = () => {
                   />
                 </div>
                 <p className="small mb-5 pb-lg-2">
-                  <a className="text-white-50 forgot-link" href="#!">
+                  <a className="forgot-link" href="#!">
                     Forgot password?
                   </a>
                 </p>
