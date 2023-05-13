@@ -1,0 +1,24 @@
+:root {
+    --background-principal: #181828;
+    --color-principal: #FEFEFE;
+    --general-font: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+    line-height: 1.5;
+    font-weight: 400;
+    background-color: var(--background-principal);
+    font-family: var(--general-font);
+    color: var(--color-principal);
+    color-scheme: light dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
