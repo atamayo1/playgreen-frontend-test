@@ -6,9 +6,15 @@ export const HistoryContainer = styled.div`
   height: 83vh;
   .container-content {
     margin: 2em;
-    color: ${({ theme }) => theme.colorPrincipal};
+    .title{
+      color: ${({ theme }) => theme.colorDescriptionsHistory};
+    }
     .description {
       width: 70vw;
+      color: ${({ theme }) => theme.colorDescriptionsHistory};
+    }
+    .text-date{
+      color: ${({ theme }) => theme.colorTextDate};
     }
   }
 `;

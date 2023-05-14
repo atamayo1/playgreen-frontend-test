@@ -1,23 +1,10 @@
-:root {
-    /* --background-principal: #181828; */
-    --background-principal: #E5E5E5;
-    /* --color-principal: #FEFEFE; */
-    --color-principal: #161617;
-    --general-font: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-body {
-    line-height: 1.5;
-    font-weight: 400;
-    background-color: var(--background-principal);
-    font-family: var(--general-font);
-    color: var(--color-principal);
-    color-scheme: light dark;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
+body{
+    background: #E5E5E5;
 }
 
 h1 {

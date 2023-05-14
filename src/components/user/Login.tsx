@@ -74,26 +74,24 @@ const Login = () => {
           <div className="container mt-5 py-5 h-100">
             <div className="row d-flex mt-5 justify-content-center align-items-center h-100">
               <div className="col-12 mt-4 col-md-8 col-lg-6 col-xl-5">
-                <h1 className="text-center">{initTitle}</h1>
-                <p className="text-center mx-5">{initDescription}</p>
+                <h1 className="text-center init-title">{initTitle}</h1>
+                <p className="text-center init-description mx-5">{initDescription}</p>
 
                 <div className="form-outline mb-4">
                   <input
                     type="email"
-                    id="typeEmailX-2"
                     placeholder="email"
                     name="email"
-                    className="form-control form-control-lg"
+                    className="typeEmailX-2 form-control form-control-lg"
                     onChange={changed}
                   />
                 </div>
                 <div className="form-outline mb-4">
                   <input
                     type="password"
-                    id="typePasswordX-2"
                     placeholder="password"
                     name="password"
-                    className="form-control form-control-lg"
+                    className="typePasswordX-2 form-control form-control-lg"
                     onChange={changed}
                   />
                 </div>

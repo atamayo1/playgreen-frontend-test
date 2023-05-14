@@ -36,6 +36,9 @@ export const SportsContainer = styled.div`
     align-items: center;
     color: #fefefe;
   }
+  .card {
+    background: transparent;
+  }
   .card-body {
     display: flex;
     justify-content: center;

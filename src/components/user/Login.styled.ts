@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const LoginContainer = styled.div`
   .forgot-link {
-    color: ${({theme}) => theme.colorPrincipal};
+    color: ${({theme}) => theme.colorForgotLink};
     text-decoration: none;
   }
 
