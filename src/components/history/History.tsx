@@ -20,13 +20,14 @@ interface HistoryItem {
 const History = () => {
   const [historyList, setHistoryList] = useState<HistoryItem[]>([]);
   const [nowDate] = useState(moment(new Date()).format("DD MMMM"));
+  const [user, setUser] = useState<string | null>(null);
 
   const getHistory = () => {
     const collectionRef = collection(db, "sports");
     getDocs(collectionRef).then((querySnapshot) => {
       const itemsToAdd: HistoryItem[] = [];
       querySnapshot.forEach((res) => {
-        console.log("getDocs",res.data())
+        console.log("getDocs", res.data());
         const newItem: HistoryItem = { id: res.id, data: res.data() };
         itemsToAdd.push(newItem);
       });
@@ -35,7 +36,8 @@ const History = () => {
   };
   useEffect(() => {
     getHistory();
-  }, []);
+    setUser(sessionStorage.getItem("user"));
+  }, [user]);
 
   return (
     <HistoryContainer>
@@ -53,7 +55,10 @@ const History = () => {
       </div>
       <HistoryList>
         {historyList
-          .filter((f) => f.data.interaction)
+          .filter(
+            (f) =>
+              f.data.interaction && user && f.data.uid === JSON.parse(user).uid
+          )
           .map((item, index) => {
             return (
               <div key={index} className="card-item mb-3">
