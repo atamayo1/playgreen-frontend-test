@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const ErrorPage = () => {
   return (
     <>
-      <p className="error-message">
+      <p className="error-message mx-2 my-2">
         <p className="error-principal-title">
           Error 404 - Página no encontrada
         </p>
