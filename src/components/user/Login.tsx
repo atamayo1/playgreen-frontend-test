@@ -1,11 +1,15 @@
-import { useState } from "react";
-import Global from "../../helpers/Global";
+import { useEffect, useState } from "react";
+//import Global from "../../helpers/Global";
 import { useForm } from "../../hooks/useForm";
-import axios from "axios";
+//import axios from "axios";
 import { LoginContainer } from "./Login.styled";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../helpers/FirebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { form, changed } = useForm({});
+  const navigate = useNavigate()
+  const { form, changed } = useForm({ email: "", password: "" });
   const [saved, setSaved] = useState<string>("not_sended");
   const [initTitle] = useState("Welcome");
   const [initDescription] = useState(
@@ -15,27 +19,39 @@ const Login = () => {
   const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const userToLogin = form;
-    const request = await axios
-      .post(Global.url + "user/login", {
-        userToLogin,
-      })
-      .then((response) => {
-        return response.data;
+    const request = signInWithEmailAndPassword(
+      auth,
+      userToLogin.email,
+      userToLogin.password
+    )
+      .then((userCredential) => {
+        // El login fue exitoso. userCredential.user contiene la información del usuario.
+        const user = userCredential.user;
+        console.log("Login exitoso: ", user);
+        return user;
       })
       .catch((error) => {
+        // Ocurrió un error durante el login. error.message contiene el mensaje de error.
+        console.error("Error en el login: ", error.message);
         return error;
       });
 
     const data = await request;
     console.log(data);
-    if (data.status == "success") {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+    if (data.accessToken) {
+      sessionStorage.setItem("token", data.accessToken);
+      sessionStorage.setItem("user", JSON.stringify(data));
       setSaved("login");
     } else {
       setSaved("error");
     }
   };
+
+  useEffect(() => {
+    if(saved == "login"){
+      navigate("/sports")
+    }
+  }, [saved])
 
   return (
     <>
@@ -66,6 +82,7 @@ const Login = () => {
                     type="email"
                     id="typeEmailX-2"
                     placeholder="email"
+                    name="email"
                     className="form-control form-control-lg"
                     onChange={changed}
                   />
@@ -75,6 +92,7 @@ const Login = () => {
                     type="password"
                     id="typePasswordX-2"
                     placeholder="password"
+                    name="password"
                     className="form-control form-control-lg"
                     onChange={changed}
                   />
@@ -84,11 +102,8 @@ const Login = () => {
                     Forgot password?
                   </a>
                 </p>
-                <input
-                    type="submit"
-                    value="Login"
-                    className="btn btn-login"
-                  />
+
+                <input type="submit" value="Login" className="btn btn-login" />
               </div>
             </div>
           </div>
